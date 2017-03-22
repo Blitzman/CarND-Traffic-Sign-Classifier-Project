@@ -154,20 +154,24 @@ The code for my final model is located in the sixth cell of the notebook. The fi
 
 All weights were initialized using a truncated normal distribution with mean 0 and standard deviation 0.001. 
 
-####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### Model Training
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+The code for training the model is located in cells 7, 8, and 9 in the notebook.
 
-To train the model, I used an ....
+Cell #7 defines the placeholders for the needed data (images, labels, and dropout keep probability). It also defines a one-hot encoding vector for the labels, as well as the hyperparameters: epochs (32), batch size (128), learning rate (1e-3), and regularization parameter (1e-6). Those hyperparameters were chosen empirically after a thorough experimentation with various setting. In addition, this cell defines the logits and weights using the aforementioned network architecture, the cross entropy function, the loss operation (which includes L2 regularization by adding a cost with a self-defined function in the very same cell), the optimizer (we used ADAM), and at last the training operation.
+
+Cell #8 defines a evaluation function to compute both the loss and the accuracy given a set of images and its labels. That function makes use of a previously defined accuracy operation which is just a mean reduction of the correct predictions, that were in turn computed using a comparison between the argmax of the logits and the argmax of the one-hot encoding for the labels.
+
+Cell #9 defines the training process itself. The training session will go over the whole dataset using minibatches for a certain number of epochs. For each epoch both training and validation losses and accuracies are computed and stored (for further analysis). We also keep a running best validation accuracy so that we save the model weights each time we hit a new best performer.
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* Training set accuracy of 1.000
+* Validation set accuracy of 0.967
+* Test set accuracy of 0.945
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
