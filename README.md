@@ -118,6 +118,8 @@ After various experiments we found out that the combination of histogram equaliz
 
 #### Data Splits
 
+We used the data splits provided by the dataset itself. Those splits were analyzed to determine the per-class occurrences. As we previously stated, the training set is composed by 34799 examples, the validation split contains 4410 images, and the testing one contains 12630 traffic signs. According to the visualization, we can observe that the training set is significantly imbalanced. The validation and testing splits are also imbalanced for some classes but the difference is not that big. Nevertheless, it appears to be a good balance between the splits so that no class is quite populated in one split but too sparse or not that present in others.
+
 ![Dataset Splits Per-class Distribution][datasetperclass]
 
 #### Model Architecture
