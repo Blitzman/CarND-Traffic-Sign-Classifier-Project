@@ -19,7 +19,10 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
+[datasetperclass]: ./images/datasetperclass.png "datasetperclass"
+[explorationtrain]: ./images/train1.png "explorationtrain"
+[explorationtest]: ./images/test1.png "explorationtest"
+[explorationvalid]: ./images/valid1.png "explorationvalid"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
@@ -100,7 +103,17 @@ The code for this step is contained in the third code cell of the IPython notebo
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![alt text][image1]
+#### Training Images Visualization
+![alt text][explorationtrain]
+
+#### Testing Images Visualization
+![alt text][explorationtest]
+
+#### Validation Images Visualization
+![alt text][explorationvalid]
+
+#### Split per-class Summary
+![alt text][datasetperclass]
 
 ###Design and Test a Model Architecture
 
