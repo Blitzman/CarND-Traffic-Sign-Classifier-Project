@@ -18,6 +18,7 @@ The goals / steps of this project are the following:
 [explorationtest]: ./images/test1.png "explorationtest"
 [explorationvalid]: ./images/valid1.png "explorationvalid"
 [preprocessing]: ./images/preprocessing.png "preprocessing"
+[learningcurves]: ./images/learningcurves.png "learningcurves"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
@@ -88,7 +89,7 @@ The code for this step is contained in the third code cell of the IPython notebo
 
 ### Dataset Exploratory Visualization
 
-The code for this step is contained in the third code cell of the IPython notebook. We performed an exploratory visualization of each split of the dataset, randomly selecting four samples of each one of them together with their classes. We can observe that the dataset is not a particularly easy one since there are various conditions such as illumination, occlusion, and slight rotations that might be difficult to learn and classify properly. However, it is worth noticing that the three splits look quite similar so the training set looks representative enough of what we will find in the test and validation ones.
+The code for this step is contained in the third code cell of the IPython notebook. We performed an exploratory visualization of each split of the dataset, randomly selecting four samples of each one of them together with their classes. We can observe that the dataset is not a particularly easy one since there are various conditions such as illumination, occlusion, and slight rotations that might be difficult to learn and classify properly. However, it is worth noticing that the three splits look quite similar so the training set looks representative enough of what we will find in the test and validation ones. We also explored the dataset split per-class distribution, but it will be discussed later in this report.
 
 #### Training Images Visualization
 ![alt text][explorationtrain]
@@ -98,9 +99,6 @@ The code for this step is contained in the third code cell of the IPython notebo
 
 #### Validation Images Visualization
 ![alt text][explorationvalid]
-
-#### Split per-class Summary
-![alt text][datasetperclass]
 
 ### Design and Test a Model Architecture
 
@@ -118,22 +116,9 @@ After various experiments we found out that the combination of histogram equaliz
 
 ![Preprocessing Steps][preprocessing]
 
-####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
+#### Data Splits
 
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
-
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
-
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
-
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+![Dataset Splits Per-class Distribution][datasetperclass]
 
 #### Model Architecture
 
@@ -167,6 +152,10 @@ Cell #7 defines the placeholders for the needed data (images, labels, and dropou
 Cell #8 defines a evaluation function to compute both the loss and the accuracy given a set of images and its labels. That function makes use of a previously defined accuracy operation which is just a mean reduction of the correct predictions, that were in turn computed using a comparison between the argmax of the logits and the argmax of the one-hot encoding for the labels.
 
 Cell #9 defines the training process itself. The training session will go over the whole dataset using minibatches for a certain number of epochs. For each epoch both training and validation losses and accuracies are computed and stored (for further analysis). We also keep a running best validation accuracy so that we save the model weights each time we hit a new best performer.
+
+#### Finding a Solution
+
+![Learning Curves][learningcurves]
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
