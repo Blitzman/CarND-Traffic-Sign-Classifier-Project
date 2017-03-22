@@ -1,12 +1,5 @@
 #**Traffic Sign Recognition** 
-
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Build a Traffic Sign Recognition Project**
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 The goals / steps of this project are the following:
 * Load the data set (see below for links to the project data set)
@@ -31,15 +24,9 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
-## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
-
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ### Dataset Summary
 
@@ -99,9 +86,7 @@ The code for this step is contained in the third code cell of the IPython notebo
 
 ### Dataset Exploratory Visualization
 
-The code for this step is contained in the third code cell of the IPython notebook.  
-
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+The code for this step is contained in the third code cell of the IPython notebook. We performed an exploratory visualization of each split of the dataset, randomly selecting four samples of each one of them together with their classes. We can observe that the dataset is not a particularly easy one since there are various conditions such as illumination, occlusion, and slight rotations that might be difficult to learn and classify properly. However, it is worth noticing that the three splits look quite similar so the training set looks representative enough of what we will find in the test and validation ones.
 
 #### Training Images Visualization
 ![alt text][explorationtrain]
@@ -146,25 +131,28 @@ Here is an example of an original image and an augmented image:
 The difference between the original data set and the augmented data set is the following ... 
 
 
-####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### Model Architecture
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
+The code for my final model is located in the sixth cell of the notebook. The final model is a modified version of LeNet-5 which consists of the following layers:
 
-My final model consisted of the following layers:
-
-| Layer         		|     Description	        					| 
+| Layer									|     Description																| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
+| Input									| 32x32x3 RGB image															| 
+| Convolution 5x5     	| 1x1 stride, VALID padding, outputs 28x28x6		|
+| ReLU									| -																							|
+| Max pooling						| 2x2 stride,  outputs 14x14x6									|
+| Convolution 5x5				| 1x1 stride, VALID padding, outputs 10x10x16		|
+| Flatten								| 5x5x16 input, 400 output											|
+| Fully connected				| 1024 neurons																	|
+| ReLU									| -																							|
+| Dropout								| -																							|
+| Fully connected				| 1024 neurons																	|
+| ReLU									| -																							|
+| Dropout								| -																							|
+| Fully connected				| 43 neurons output (classes)										|
+| Softmax								| -										        									|
 
+All weights were initialized using a truncated normal distribution with mean 0 and standard deviation 0.001. 
 
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
