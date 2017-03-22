@@ -38,21 +38,63 @@ The goals / steps of this project are the following:
 
 You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-###Data Set Summary & Exploration
+### Dataset Summary
 
-####1. Provide a basic summary of the data set and identify where in your code the summary was done. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+The code for this step is contained in the third code cell of the IPython notebook. I used *shape*, *len*, and *set* functions to calculate summary statistics of the traffic signs dataset. A CSV reader with a dictionary was used to read and store class IDs and sign names. The results are as follows:
 
-The code for this step is contained in the second code cell of the IPython notebook.  
+* The size of training set is 34799 images.
+* The size of the validation set is 4410 images.
+* The size of test set is 12630 images.
+* The shape of a traffic sign image is (32, 32, 3).
+* The number of unique classes in the dataset is 43 (for all splits: train, valid, and test) and they are the following ones:
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+| Class ID							| Sign Name							|
+|:---------------------:|:---------------------------------------------:| 
+| 0						| Speed limit (20km/h)							|
+| 1						| Speed limit (30km/h)							|
+| 2						| Speed limit (50km/h)							|
+| 3						| Speed limit (60km/h)							|
+| 4						| Speed limit (70km/h)							|
+| 5						| Speed limit (80km/h)							|
+| 6						| End of speed limit (80km/h)					|
+| 7						| Speed limit (100km/h)							|
+| 8						| Speed limit (120km/h)							|
+| 9						| No passing									|
+| 10					| No passing for vehicles over 3.5 metric tons |
+| 11					| Right-of-way at the next intersection |
+| 12					| Priority road |
+| 13					| Yield |
+| 14					| Stop |
+| 15					| No vehicles |
+| 16					| Vehicles over 3.5 metric tons prohibited |
+| 17					| No entry |
+| 18					| General caution |
+| 19					| Dangerous curve to the left |
+| 20					| Dangerous curve to the right |
+| 21					| Double curve |
+| 22					| Bumpy road |
+| 23					| Slippery road |
+| 24					| Road narrows on the right |
+| 25					| Road work |
+| 26					| Traffic signals |
+| 27					| Pedestrians |
+| 28					| Children crossing |
+| 29					| Bicycles crossing |
+| 30					| Beware of ice/snow |
+| 31					| Wild animals crossing |
+| 32					| End of all speed and passing limits |
+| 33					| Turn right ahead |
+| 34					| Turn left ahead |
+| 35					| Ahead only |
+| 36					| Go straight or right |
+| 37					| Go straight or left |
+| 38					| Keep right |
+| 39					| Keep left |
+| 40					| Roundabout mandatory |
+| 41					| End of no passing |
+| 42					| End of no passing by vehicles over 3.5 metric tons |
 
-* The size of training set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
-
-####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
+### Dataset Exploratory Visualization
 
 The code for this step is contained in the third code cell of the IPython notebook.  
 
