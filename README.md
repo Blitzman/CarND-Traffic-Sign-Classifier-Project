@@ -16,6 +16,7 @@ The goals / steps of this project are the following:
 [explorationtrain]: ./images/train1.png "explorationtrain"
 [explorationtest]: ./images/test1.png "explorationtest"
 [explorationvalid]: ./images/valid1.png "explorationvalid"
+[preprocessing]: ./images/preprocessing.png "preprocessing"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
@@ -100,19 +101,21 @@ The code for this step is contained in the third code cell of the IPython notebo
 #### Split per-class Summary
 ![alt text][datasetperclass]
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
+#### Data Preprocessing
 
-The code for this step is contained in the fourth code cell of the IPython notebook.
+The code for this step is contained in the fifth code cell of the notebook. This cell contains the following functions that were implemented for consideration in the preprocessing pipeline:
 
-As a first step, I decided to convert the images to grayscale because ...
+* Feature Normalization
+* Feature Standardization
+* Feature Rescaling
+* RGB to Grayscale Conversion
+* Histogram Equalization
 
-Here is an example of a traffic sign image before and after grayscaling.
+After various experiments we found out that the combination of histogram equalization and feature rescaling to the range -0.5-0.5 offered the best performance. Feature normalization and standardization did not seem to work well on this problem in particular and RGB to grayscale conversion, despite the fact that it simplifies the problem for smaller networks, throws out important color information that helps getting rid of certain ambiguities. The following figure shows the results of our preprocessing pipeline on a training image.
 
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
+![Preprocessing Steps][preprocessing]
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
