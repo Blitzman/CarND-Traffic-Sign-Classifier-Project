@@ -183,26 +183,25 @@ We also added L2 regularization with a regularization parameter of 1e-6. We foun
 
 ###Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+
+In order to validate our model and prove its generalization capabilities we downloaded 12 images of similar traffic signs to the ones we have trained with and cropped them to a 32x32 pixels resolution. The code for loading and showing those images is located in cell 12. We also included a CSV file in which we manually annotated each sign with its corresponding class. The corresponding images with their labels are shown in the following figure.
 
 ![New Dataset][newdataset]
 
-The first image might be difficult to classify because ...
+As we can see, these images feature various conditions that make them a good test scenario for our model. Lighting conditions are varied with many of them even featuring reflections (see the Go straight or left or Priority Road examples) or really low contrast ratio (Ahead Only). In addition, some of them are noisy (like the Stop sign) and extremely rotated or jagged (Speed Limit 80km/h or Speed Limit 60km/h).
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### Results and Discussion
 
-The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
-
-Here are the results of the prediction:
+The code for making predictions on the final model is located in cell 13, that code also computes the accuracy on this new set. Cell 14 includes a routine for showing each image with the predicted label as shown in the following figure.
 
 ![New Predictions][newpredictions]
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 8 of the 12 traffic signs, which gives an accuracy of 0.750. This compares badly to the accuracy on the test set which was way over 0.900. It is fair to mention that this new set is harder than the original one due to the aforementioned reasons. One possible way to improve our model is to include augmentations in the dataset that help dealing with this unforeseen conditions (bad illumination, extreme rotations or shearing, scales...).
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### Softmax Probabilities Analysis
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+We also included code in cells 15 and 16 to get the TOP-5 softmax probabilities for each predictions and visualize them with the corresponding image respectively. Results are shown in the following figure.
 
 ![TOP5 Inspection][top5inspection]
+
+As we can notice, the model performs flawlessly on those images which are properly recognized, being almost completely sure of what class are they (Go straight or left, Priority Road, Yield, Ahead Only, Keep Right, No entry, Stop, and Yield). Failure cases are less extreme since the model is not that sure about the predictions (Speed limit 60 km/h is badly recognized as End of Speed Limit 80km/h but the true class is also in the TOP5. The same happens with the Speed Limit 80km/h, which is mistaken by Ahead only but it still appears on the TOP5). We strongly believe that augmentations might help overcoming theses issues with hard examples.
