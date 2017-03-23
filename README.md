@@ -19,13 +19,9 @@ The goals / steps of this project are the following:
 [explorationvalid]: ./images/valid1.png "explorationvalid"
 [preprocessing]: ./images/preprocessing.png "preprocessing"
 [learningcurves]: ./images/learningcurves.png "learningcurves"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[newdataset]: ./images/newdataset.png "newdataset"
+[newpredictions]: ./images/newpredictions.png "newpredictions"
+[top5inspection]: ./images/top5inspection.png "top5inspection"
 
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -161,7 +157,7 @@ After training the model with the code we explained above, we plotted a couple o
 
 ![Learning Curves][learningcurves]
 
-As we can observe, we achieved a good learning behavior with an appropriate learning rate (loss decreases slowly but steadily). Training accuracy is almost stable after epoch 15 while validation accuracy still increases slowly until epoch 30. At that point, training accuracy is already 1.000 and we get a maximum validation accuracy of 0.967. That was the best set of weights that we achieved for our network with this training procedure and the previously stated hyperparameter setup. We saved that model and evaluated the accuracy on the test set, achieving a significantly good 0.945. That fact proves that our model is not overfitting that much to the training data and it is capable of generalizing to new examples.
+As we can observe, we achieved a good learning behavior with an appropriate learning rate (loss decreases slowly but steadily). Training accuracy is almost stable after epoch 15 while validation accuracy still increases slowly until epoch 30. At that point, training accuracy is already 1.000 and we get a maximum validation accuracy of 0.970. That was the best set of weights that we achieved for our network with this training procedure and the previously stated hyperparameter setup. We saved that model and evaluated the accuracy on the test set, achieving a significantly good 0.945. That fact proves that our model is not overfitting that much to the training data and it is capable of generalizing to new examples.
 
 It is important to remark that this architecture/procedure/model was the final outcome of an iterative approach which we can describe by answering to the following questions:
 
@@ -189,10 +185,7 @@ We also added L2 regularization with a regularization parameter of 1e-6. We foun
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
-
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![New Dataset][newdataset]
 
 The first image might be difficult to classify because ...
 
@@ -202,14 +195,7 @@ The code for making predictions on my final model is located in the tenth cell o
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
-
+![New Predictions][newpredictions]
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
@@ -219,13 +205,4 @@ The code for making predictions on my final model is located in the 11th cell of
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
+![TOP5 Inspection][top5inspection]
