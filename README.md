@@ -157,29 +157,33 @@ Cell #9 defines the training process itself. The training session will go over t
 
 #### Finding a Solution
 
+After training the model with the code we explained above, we plotted a couple of learning curves to analyze the evolution of both training and validation accuracy and loss. The function we used to plot those curves is located in the ninth cell of the notebook.
+
 ![Learning Curves][learningcurves]
 
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+As we can observe, we achieved a good learning behavior with an appropriate learning rate (loss decreases slowly but steadily). Training accuracy is almost stable after epoch 15 while validation accuracy still increases slowly until epoch 30. At that point, training accuracy is already 1.000 and we get a maximum validation accuracy of 0.967. That was the best set of weights that we achieved for our network with this training procedure and the previously stated hyperparameter setup. We saved that model and evaluated the accuracy on the test set, achieving a significantly good 0.945. That fact proves that our model is not overfitting that much to the training data and it is capable of generalizing to new examples.
 
-The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
+It is important to remark that this architecture/procedure/model was the final outcome of an iterative approach which we can describe by answering to the following questions:
 
-My final model results were:
-* Training set accuracy of 1.000
-* Validation set accuracy of 0.967
-* Test set accuracy of 0.945
-
-If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+At first, we tried a plain LeNet-5 architecture, given its many success stories and the fact that we already implemented it in the nanodegree lessons. This network was straightforward to define and easy to setup to get a first version of the pipeline up and running.
+
+* What were some problems with the initial architecture?
+
+The main problem was that the network's accuracy on the validation set was getting stuck quite early and really low (less than 0.9). Inspecting the evolution of training and validation accuracies it was an obvious overfitting problem. On the other hand, we also observed that the loss decreased extremely fast during the first epochs and then it stabilized.
  
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
+We carried out some architectural changes to address overfitting. The main change consisted of introducing dropout layers after the already existing fully connected ones. We used a standard keep probability of 0.5. In addition, to avoid underfitting due to that change, we also increased the number of neurons in first two fully connected layers to 1024. 
+
+* Which parameters were tuned? How were they adjusted and why?
+
+We decreased the learning rate from 1e-2 to 1e-3 to get a steadier gradient descent. This led to better convergence in general.
+
+We also increased the original batch size from 32 to 128. We ran different experiments with varying batch sizes (32, 64, 128, and 256) and we found a slight increase in accuracy as we increased the batch size. However, in order not to make training too slow we decided to keep an intermediate size of 128.
+
+We also added L2 regularization with a regularization parameter of 1e-6. We found no significant difference with other close values (1e-5 and 1e-7).
 
 ###Test a Model on New Images
 
