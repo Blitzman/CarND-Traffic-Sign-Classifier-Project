@@ -3,13 +3,11 @@
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 The goals / steps of this project are the following:
-* Load the data set (see below for links to the project data set)
+* Load the German Traffic Sign recognition data set
 * Explore, summarize and visualize the data set
 * Design, train and test a model architecture
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
-* Summarize the results with a written report
-
 
 [//]: # (Image References)
 
@@ -22,8 +20,6 @@ The goals / steps of this project are the following:
 [newdataset]: ./images/newdataset.png "newdataset"
 [newpredictions]: ./images/newpredictions.png "newpredictions"
 [top5inspection]: ./images/top5inspection.png "top5inspection"
-
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 
